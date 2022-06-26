@@ -229,6 +229,8 @@ type Config struct {
 	OverrideMergeNetsplitBlock *big.Int `toml:",omitempty"`
 
 	OverrideTerminalTotalDifficulty *big.Int `toml:",omitempty"`
+
+	OtsIndexApprovals bool
 }
 
 type Sync struct {
