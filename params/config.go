@@ -65,6 +65,7 @@ var (
 	RopstenGenesisHash    = common.HexToHash("0x41941023680923e0fe4d74a34bdac8141f2540e3ae90623718e47d66d1ca4a2d")
 	RinkebyGenesisHash    = common.HexToHash("0x6341fd3daf94b748c72ced5a5b26028f2474f5f00d824504e4fa37a75767e177")
 	GoerliGenesisHash     = common.HexToHash("0xbf7e331f7f7c1dd2e05159666b3bf8bc7a8a3a9eb1d518969eab529dd9b88c1a")
+	UVMGenesisHash        = common.HexToHash("0x1fa7ecfde155206a9eebbf8883ffd400526a18421229fd729336ad845b61096a") // Can be found with web3.eth.getBlock(0) in the geth console
 	KilnDevnetGensisHash  = common.HexToHash("0x51c7fe41be669f69c45c33a56982cbde405313342d9e2b00d7c91a7b284dd4f8")
 	SokolGenesisHash      = common.HexToHash("0x5b28c1bfd3a15230c9a46b399cd0f9a6920d432e85381cc6a140b06e8410112f")
 	FermionGenesisHash    = common.HexToHash("0x0658360d8680ead416900a552b67b84e6d575c7f0ecab3dbe42406f9f8c34c35")
@@ -97,6 +98,9 @@ var (
 
 	// RinkebyChainConfig contains the chain parameters to run a node on the Rinkeby test network.
 	RinkebyChainConfig = readChainSpec("chainspecs/rinkeby.json")
+
+	// UvmChainConfig contains the chain parameters to run a node on the Uvm test network.
+	UVMChainConfig = readChainSpec("chainspecs/uvm.json")
 
 	// GoerliChainConfig contains the chain parameters to run a node on the Görli test network.
 	GoerliChainConfig = readChainSpec("chainspecs/goerli.json")
@@ -802,6 +806,8 @@ func ChainConfigByChainName(chain string) *ChainConfig {
 		return RinkebyChainConfig
 	case networkname.GoerliChainName:
 		return GoerliChainConfig
+	case networkname.UVMChainName:
+		return UVMChainConfig
 	case networkname.KilnDevnetChainName:
 		return KilnDevnetChainConfig
 	case networkname.SokolChainName:
@@ -837,6 +843,8 @@ func GenesisHashByChainName(chain string) *common.Hash {
 		return &RinkebyGenesisHash
 	case networkname.GoerliChainName:
 		return &GoerliGenesisHash
+	case networkname.UVMChainName:
+		return &UVMGenesisHash
 	case networkname.KilnDevnetChainName:
 		return &KilnDevnetGensisHash
 	case networkname.SokolChainName:
@@ -872,6 +880,8 @@ func ChainConfigByGenesisHash(genesisHash common.Hash) *ChainConfig {
 		return RinkebyChainConfig
 	case genesisHash == GoerliGenesisHash:
 		return GoerliChainConfig
+	case genesisHash == UVMGenesisHash:
+		return UVMChainConfig
 	case genesisHash == KilnDevnetGensisHash:
 		return KilnDevnetChainConfig
 	case genesisHash == SokolGenesisHash:

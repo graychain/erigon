@@ -6,6 +6,7 @@ const (
 	RopstenChainName    = "ropsten"
 	RinkebyChainName    = "rinkeby"
 	GoerliChainName     = "goerli"
+	UVMChainName        = "uvm"
 	KilnDevnetChainName = "kiln-devnet"
 	DevChainName        = "dev"
 	SokolChainName      = "sokol"
@@ -24,6 +25,7 @@ var All = []string{
 	RopstenChainName,
 	RinkebyChainName,
 	GoerliChainName,
+	UVMChainName,
 	KilnDevnetChainName,
 	//DevChainName,
 	SokolChainName,

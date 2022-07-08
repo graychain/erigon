@@ -591,6 +591,18 @@ func DefaultRinkebyGenesisBlock() *Genesis {
 	}
 }
 
+// DefaultUVMGenesisBlock returns the UVM network genesis block.
+func DefaultUVMGenesisBlock() *Genesis {
+	return &Genesis{
+		Config:     params.UVMChainConfig,
+		Timestamp:  0x62c68447,
+		ExtraData:  hexutil.MustDecode("0x0000000000000000000000000000000000000000000000000000000000000000068fc5749e6c7b767eb92ceccc5881aa2d1cbbf41b5707f4ec5fbdcbb7f2c49c36fd61609900d5efbf8bd0ddbffcf26038f7d8c1dbd072aedc5cf8090000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"),
+		GasLimit:   4700000,
+		Difficulty: big.NewInt(0x1),
+		Alloc:      readPrealloc("allocs/uvm.json"),
+	}
+}
+
 // DefaultGoerliGenesisBlock returns the Görli network genesis block.
 func DefaultGoerliGenesisBlock() *Genesis {
 	return &Genesis{
@@ -785,6 +797,8 @@ func DefaultGenesisBlockByChainName(chain string) *Genesis {
 		return DefaultRinkebyGenesisBlock()
 	case networkname.GoerliChainName:
 		return DefaultGoerliGenesisBlock()
+	case networkname.UVMChainName:
+		return DefaultUVMGenesisBlock()
 	case networkname.SokolChainName:
 		return DefaultSokolGenesisBlock()
 	case networkname.FermionChainName:
